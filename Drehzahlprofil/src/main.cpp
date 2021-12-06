@@ -55,8 +55,6 @@ int main()
     fscanf(pFile, "r = %lf;2d = %lf\n", &wRadius, &wDistance);
     fscanf(pFile, "x0 = %lf;y0 = %lf;theta0 = %lf\n", &xR0, &yR0, &theta);
 
-    theta = theta / 180 * M_PI;
-
     if (numberLines > NUM_VALUES)
     {
         printf("Zu viele Werte!\n\n");
@@ -79,11 +77,13 @@ int main()
 
     printf("\nRoboterdaten:\n\n");
     printf("\tRadius des Rades: %d mm\n", (int)(wRadius * 1000));
-    printf("\tRadabstand: %d mm\n\n", (int)(wRadius * 1000));
+    printf("\tRadabstand: %d mm\n\n", (int)(wDistance * 1000));
     printf("\tStartposition:\n");
     printf("\txR0 = %.3lf m\n", xR0);
     printf("\tyR0 = %.3lf m\n", yR0);
     printf("\ttheta0 = %.2lf Grad\n\n", theta);
+
+    theta = (theta / 180) * M_PI;
 
     // set time base to 1 ms
     dt = 0.001;
